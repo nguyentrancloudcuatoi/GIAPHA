@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Gia Phả - Lưu Giữ Di Sản Gia Đình</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #8b5e3c;
+            --bg-light: #f7f5e6;
+        }
+
+        .navbar {
+            background-color: var(--bg-light) !important;
+        }
+
+        .navbar-brand {
+            color: var(--primary-color) !important;
+            font-weight: bold;
+        }
+
+        .nav-link {
+            color: var(--primary-color) !important;
+            margin: 0 0.5rem;
+        }
+
+        .nav-link:hover {
+            background-color: var(--primary-color);
+            color: white !important;
+            border-radius: 5px;
+        }
+
+        .btn-login {
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+        }
+
+        .btn-login:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-register {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-register:hover {
+            background-color: #6d4b30;
+            color: white;
+        }
+
+        .hero {
+            height: 70vh;
+            background-image: url('./assets/images/Background.jpg');
+            background-size: cover;
+            background-position: center;
+            padding-top: 76px;
+        }
+
+        .hero-content {
+            height: calc(70vh - 76px);
+        }
+
+        .cta-button {
+            background-color: var(--primary-color);
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #6d4b30;
+            color: white;
+        }
+
+        /* Thêm CSS cho phần sự kiện */
+        .timeline-section {
+            padding: 80px 0;
+            background-color: #fff;
+        }
+
+        .timeline-item {
+            border-left: 2px solid var(--primary-color);
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 24px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: var(--primary-color);
+        }
+
+        /* CSS cho footer */
+        .footer {
+            background-color: var(--bg-light);
+            padding: 50px 0 20px;
+            color: var(--primary-color);
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .social-links a {
+            color: var(--primary-color);
+            margin-right: 15px;
+            font-size: 20px;
+        }
+    </style>
+    <!-- Thêm Font Awesome cho icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <img src="./assets/images/Logo.png" alt="logo" height="40" class="me-2">
+            <a class="navbar-brand" href="#">Gia Phả Số</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#trangchu">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#gioithieu">Giới thiệu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#tinhnang">Tính năng</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#lienhe">Liên hệ</a>
+                    </li>
+                </ul>
+                <div class="d-flex gap-2">
+                    <a href="#dangnhap" class="btn btn-login">Đăng nhập</a>
+                    <a href="#dangky" class="btn btn-register">Đăng ký</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content d-flex align-items-center justify-content-center">
+            <div class="container text-center text-white">
+                <h1 class="display-4 mb-4">Lưu Giữ Lịch Sử Gia Đình</h1>
+                <p class="lead mb-4">Khám phá, lưu trữ và chia sẻ lịch sử gia đình của bạn với công cụ quản lý gia phả trực tuyến hiện đại.</p>
+                <a href="#dangky" class="btn btn-lg cta-button">Bắt đầu ngay</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS và Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Phần Timeline Sự Kiện -->
+    <section id="sukien" class="timeline-section">
+        <div class="container">
+            <h2 class="text-center mb-5">Các Sự Kiện Quan Trọng</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h4>Khai Sinh</h4>
+                    <p class="text-muted">Ghi lại thông tin về ngày sinh, nơi sinh và các chi tiết quan trọng của thành viên gia đình.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Học Vấn & Sự Nghiệp</h4>
+                    <p class="text-muted">Lưu trữ các mốc quan trọng về học vấn, công việc và thành tựu trong sự nghiệp.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Hôn Nhân</h4>
+                    <p class="text-muted">Ghi nhận thông tin về hôn nhân, ngày cưới và các sự kiện gia đình quan trọng.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Di Cư & Định Cư</h4>
+                    <p class="text-muted">Theo dõi lịch sử di chuyển và định cư của các thành viên trong gia tộc.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Phần Giới thiệu -->
+    <section id="gioithieu" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Giới Thiệu</h2>
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <img src="./assets/images/family-tree.jpg" alt="Gia phả" class="img-fluid rounded shadow">
+                </div>
+                <div class="col-md-6">
+                    <h3 class="mb-4">Về Gia Phả Số</h3>
+                    <p class="lead">Gia Phả Số là nền tảng quản lý gia phả hiện đại, giúp bạn lưu giữ và truyền tải lịch sử gia đình qua nhiều thế hệ.</p>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i>Dễ dàng tạo và quản lý cây gia phả</li>
+                        <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i>Lưu trữ hình ảnh và tài liệu gia đình</li>
+                        <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i>Chia sẻ thông tin với các thành viên gia đình</li>
+                        <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i>Bảo mật thông tin tuyệt đối</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Phần Tính năng -->
+    <section id="tinhnang" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Tính Năng Nổi Bật</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="fas fa-sitemap fa-3x mb-3" style="color: var(--primary-color)"></i>
+                            <h4 class="card-title">Tạo Cây Gia Phả</h4>
+                            <p class="card-text">Dễ dàng tạo và chỉnh sửa cây gia phả với giao diện trực quan, thân thiện</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="fas fa-images fa-3x mb-3" style="color: var(--primary-color)"></i>
+                            <h4 class="card-title">Lưu Trữ Kỷ Niệm</h4>
+                            <p class="card-text">Lưu giữ hình ảnh, video và tài liệu quan trọng của gia đình</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="fas fa-users fa-3x mb-3" style="color: var(--primary-color)"></i>
+                            <h4 class="card-title">Chia Sẻ & Kết Nối</h4>
+                            <p class="card-text">Dễ dàng chia sẻ thông tin và kết nối với các thành viên trong gia đình</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Phần Liên hệ -->
+    <section id="lienhe" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Liên Hệ</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card border-0 shadow">
+                        <div class="card-body p-5">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Họ và tên</label>
+                                    <input type="text" class="form-control" id="name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="subject" class="form-label">Chủ đề</label>
+                                    <input type="text" class="form-control" id="subject" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="message" class="form-label">Nội dung</label>
+                                    <textarea class="form-control" id="message" rows="5" required></textarea>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-lg cta-button">Gửi tin nhắn</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section id="sukien" class="timeline-section">
+        <div class="container">
+            <h2 class="text-center mb-5">Các Sự Kiện Quan Trọng</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h4>Khai Sinh</h4>
+                    <p class="text-muted">Ghi lại thông tin về ngày sinh, nơi sinh và các chi tiết quan trọng của thành viên gia đình.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Học Vấn & Sự Nghiệp</h4>
+                    <p class="text-muted">Lưu trữ các mốc quan trọng về học vấn, công việc và thành tựu trong sự nghiệp.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Hôn Nhân</h4>
+                    <p class="text-muted">Ghi nhận thông tin về hôn nhân, ngày cưới và các sự kiện gia đình quan trọng.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Di Cư & Định Cư</h4>
+                    <p class="text-muted">Theo dõi lịch sử di chuyển và định cư của các thành viên trong gia tộc.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5>Về Gia Phả Số</h5>
+                    <p>Nền tảng quản lý gia phả trực tuyến giúp bạn lưu giữ và chia sẻ lịch sử gia đình một cách dễ dàng.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Liên Kết Nhanh</h5>
+                    <ul class="footer-links">
+                        <li><a href="#trangchu">Trang chủ</a></li>
+                        <li><a href="#gioithieu">Giới thiệu</a></li>
+                        <li><a href="#tinhnang">Tính năng</a></li>
+                        <li><a href="#sukien">Sự kiện</a></li>
+                        <li><a href="#lienhe">Liên hệ</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Kết Nối</h5>
+                    <div class="social-links mb-3">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                    <p>Email: contact@giaphaso.vn<br>
+                    Điện thoại: (84) 123 456 789</p>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p>&copy; 2024 Gia Phả Số. Tất cả quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
