@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Công Đức - Gia Phả Số</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/congduc.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Mobile Menu Button -->
+    <div class="mobile-menu">
+        <button class="menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar">
+        <div class="logo">
+            <img src="/assets/images/Logo.png" alt="logo-img">
+        </div>
+        <ul class="nav-links">
+            <li><a href="/templates/Editor/index.html"><i class="fas fa-home"></i> Trang chủ</a></li>
+            <li><a href="/templates/Editor/templates/quanlythanhvien.html"><i class="fas fa-user-friends"></i> Quản lý Thành viên</a></li>
+            <li><a href="/templates/Editor/templates/quanlygiapha.html"><i class="fas fa-sliders-h"></i> Quản lý Gia phả</a></li>
+            <li><a href="/templates/Editor/templates/phaky.html"><i class="fas fa-list-alt"></i> Phả ký</a></li>
+            <li><a href="/templates/Editor/templates/congduc.html"><i class="fas fa-hand-holding-heart"></i> Công đức</a></li>
+            <li><a href="/templates/Editor/templates/ngoaipha.html"><i class="fas fa-book"></i> Ngoại phả</a></li>
+            <li><a href="/templates/Editor/templates/hinhanh.html"><i class="fas fa-image"></i> Hình ảnh</a></li>
+        </ul>
+        <div style="position: absolute; bottom: 2rem; width: calc(100% - 3rem);">
+            <ul class="nav-links">
+                <li><a href="/templates/Editor/templates/setting.html"><i class="fas fa-cog"></i> Cài đặt</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <h1 class="page-title">Công Đức</h1>
+        <div class="search-filter-container">
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Tìm kiếm người đóng góp...">
+            </div>
+            <button class="filter-btn">
+                <i class="fas fa-filter"></i>
+                Lọc
+            </button>
+        </div>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="left-padding">Tên</th>
+                        <th class="left-padding">Ngày đóng góp</th>
+                        <th class="left-padding">Số tiền</th>
+                        <th class="action-col">Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody id="donationTableBody">
+                    <tr>
+                        <td class="left-padding">Nguyễn Văn A</td>
+                        <td class="left-padding">01/03/2024</td>
+                        <td class="left-padding money-col">1.000.000đ</td>
+                        <td class="action-col">
+                            <div class="action-buttons">
+                                <button class="action-btn edit" title="Chỉnh sửa"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn delete" title="Xóa"><i class="fas fa-trash-alt"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="left-padding">Trần Thị B</td>
+                        <td class="left-padding">28/02/2024</td>
+                        <td class="left-padding money-col">2.500.000đ</td>
+                        <td class="action-col">
+                            <div class="action-buttons">
+                                <button class="action-btn edit" title="Chỉnh sửa"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn delete" title="Xóa"><i class="fas fa-trash-alt"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="left-padding">Lê Văn C</td>
+                        <td class="left-padding">25/02/2024</td>
+                        <td class="left-padding money-col">500.000đ</td>
+                        <td class="action-col">
+                            <div class="action-buttons">
+                                <button class="action-btn edit" title="Chỉnh sửa"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn delete" title="Xóa"><i class="fas fa-trash-alt"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <script>
+    // Dữ liệu mẫu, có thể thay bằng API hoặc localStorage
+    let donations = JSON.parse(localStorage.getItem('donations') || '[]');
+
+    function renderDonations() {
+        const tbody = document.getElementById('donationTableBody');
+        tbody.innerHTML = '';
+        if (donations.length === 0) return;
+        donations.forEach(d => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `<td class="left-padding">${d.name}</td><td class="left-padding">${d.date}</td><td class="left-padding money-col">${d.amount}</td>`;
+            tbody.appendChild(tr);
+        });
+    }
+
+    // Hàm giả lập thêm đóng góp mới
+    function addDonation(name, date, amount) {
+        donations.push({ name, date, amount });
+        localStorage.setItem('donations', JSON.stringify(donations));
+        renderDonations();
+    }
+
+    // Mobile menu toggle
+    document.querySelector('.menu-btn').addEventListener('click', function() {
+        document.querySelector('.sidebar').classList.toggle('active');
+    });
+
+    // Close sidebar when clicking outside on mobile
+    document.addEventListener('click', function(event) {
+        const sidebar = document.querySelector('.sidebar');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        
+        if (window.innerWidth <= 768 && 
+            !sidebar.contains(event.target) && 
+            !mobileMenu.contains(event.target) && 
+            sidebar.classList.contains('active')) {
+            sidebar.classList.remove('active');
+        }
+    });
+
+    // Khởi tạo bảng khi load trang
+    renderDonations();
+    // Ví dụ: addDonation('Nguyễn Văn A', '2024-06-01', '1.000.000đ');
+    </script>
+</body>
+</html>

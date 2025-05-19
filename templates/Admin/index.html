@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Gia Phả Số</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/charts.js"></script>
+</head>
+<body>
+    <!-- Mobile Menu Button -->
+    <div class="mobile-menu">
+        <button class="menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar">
+        <div class="logo">
+            <img src="/assets/images/Logo.png" alt="logo-img">
+        </div>
+        <ul class="nav-links">
+            <li><a href="../Admin/index.html"><i class="fas fa-home"></i> Trang chủ</a></li>
+            <li><a href="../Admin/templates/users.html"><i class="fas fa-users"></i> Quản lý tài khoản</a></li>
+            <li><a href="../Admin/templates/quanlygiapha.html"><i class="fas fa-sitemap"></i> Quản lý gia phả</a></li>
+            <li><a href="../Admin/templates/thongke.html"><i class="fas fa-chart-bar"></i> Thống kê</a></li>
+        </ul>
+        <div style="position: absolute; bottom: 2rem; width: calc(100% - 3rem);">
+            <ul class="nav-links">
+                <li><a href="../Admin/templates/settings.html"><i class="fas fa-cog"></i> Cài đặt</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content" style="background:#f7f7f7; min-height:100vh;">
+        <h1 class="page-title">Dashboard Quản Trị</h1>
+        
+        <!-- Thống kê tổng quan -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <i class="fas fa-users"></i>
+                <div class="stat-info">
+                    <h3>Tổng người dùng</h3>
+                    <p class="stat-number">5,234</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-sitemap"></i>
+                <div class="stat-info">
+                    <h3>Tổng gia phả</h3>
+                    <p class="stat-number">1,567</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-user-plus"></i>
+                <div class="stat-info">
+                    <h3>Người dùng mới (tháng)</h3>
+                    <p class="stat-number">245</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-chart-line"></i>
+                <div class="stat-info">
+                    <h3>Tăng trưởng (tháng)</h3>
+                    <p class="stat-number">15%</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Biểu đồ thống kê -->
+        <div class="charts-container">
+            <!-- Biểu đồ người dùng -->
+            <div class="chart-card">
+                <h3>Thống kê người dùng theo tháng</h3>
+                <canvas id="userChart"></canvas>
+            </div>
+            
+            <!-- Biểu đồ gia phả -->
+            <div class="chart-card">
+                <h3>Thống kê gia phả theo tháng</h3>
+                <canvas id="treeChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Hoạt động gần đây -->
+        <div class="recent-activities">
+            <h2>Hoạt động gần đây</h2>
+            <div class="activities-grid">
+                <div class="activity-card">
+                    <h3>Người dùng mới đăng ký</h3>
+                    <ul class="activity-list">
+                        <li>
+                            <span class="activity-name">Nguyễn Văn A</span>
+                            <span class="activity-date">01/06/2024</span>
+                        </li>
+                        <li>
+                            <span class="activity-name">Trần Thị B</span>
+                            <span class="activity-date">30/05/2024</span>
+                        </li>
+                        <li>
+                            <span class="activity-name">Lê Văn C</span>
+                            <span class="activity-date">28/05/2024</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="activity-card">
+                    <h3>Gia phả mới tạo</h3>
+                    <ul class="activity-list">
+                        <li>
+                            <span class="activity-name">Gia phả họ Nguyễn</span>
+                            <span class="activity-owner">Nguyễn Văn A</span>
+                            <span class="activity-date">01/06/2024</span>
+                        </li>
+                        <li>
+                            <span class="activity-name">Gia phả họ Trần</span>
+                            <span class="activity-owner">Trần Thị B</span>
+                            <span class="activity-date">30/05/2024</span>
+                        </li>
+                        <li>
+                            <span class="activity-name">Gia phả họ Lê</span>
+                            <span class="activity-owner">Lê Văn C</span>
+                            <span class="activity-date">28/05/2024</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

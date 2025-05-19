@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Layout</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/phaky.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Mobile Menu Button -->
+    <div class="mobile-menu">
+        <button class="menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar">
+        <div class="logo">
+            <img src="/assets/images/Logo.png" alt="logo-img">
+        </div>
+        <ul class="nav-links">
+            <li><a href="/templates/Editor/index.html"><i class="fas fa-home"></i> Trang chủ</a></li>
+            <li><a href="/templates/Editor/templates/quanlythanhvien.html"><i class="fas fa-user-friends"></i> Quản lý Thành viên</a></li>
+            <li><a href="/templates/Editor/templates/quanlygiapha.html"><i class="fas fa-sliders-h"></i> Quản lý Gia phả</a></li>
+            <li><a href="/templates/Editor/templates/phaky.html"><i class="fas fa-list-alt"></i> Phả ký</a></li>
+            <li><a href="/templates/Editor/templates/congduc.html"><i class="fas fa-hand-holding-heart"></i> Công đức</a></li>
+            <li><a href="/templates/Editor/templates/ngoaipha.html"><i class="fas fa-book"></i> Ngoại phả</a></li>
+            <li><a href="/templates/Editor/templates/hinhanh.html"><i class="fas fa-image"></i> Hình ảnh</a></li>
+        </ul>
+        </ul>
+        <div style="position: absolute; bottom: 2rem; width: calc(100% - 3rem);">
+            <ul class="nav-links">
+                <li><a href="/templates/Editor/templates/setting.html"><i class="fas fa-cog"></i> Cài đặt</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content for Phả ký -->
+    <div class="main-content" style="margin-left: 250px; padding: 40px 40px 0 40px;">
+        <h1 style="font-size: 2.5rem; font-family: serif; margin-bottom: 1.5rem;">Phả ký</h1>
+        <div class="phaky-header" style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem;">
+            <button id="addEventBtn" style="background: #8ec3c9; color: #fff; border: none; border-radius: 8px; padding: 0.7rem 2.2rem; font-size: 1.1rem; cursor: pointer;">Thêm sự kiện</button>
+            <select id="filterTime" class="phaky-filter"><option>Lọc theo thời gian</option></select>
+            <select id="filterMember" class="phaky-filter"><option>Lọc theo thành viên</option></select>
+            <select id="filterType" class="phaky-filter"><option>Lọc theo sự kiện</option></select>
+        </div>
+        <div id="eventList" class="phaky-event-list">
+            <div id="noEventMsg" style="text-align:center; color:#888; font-size:1.2rem; margin-top:2rem;">Chưa có sự kiện nào</div>
+        </div>
+    </div>
+
+    <!-- Popup Form Thêm Sự Kiện -->
+    <div id="eventModal" class="modal" style="display:none; position:fixed; z-index:2000; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.3); align-items:center; justify-content:center;">
+        <div class="modal-content" style="background:#fff; padding:2rem 2.5rem; border-radius:16px; min-width:340px; max-width:95vw; position:relative;">
+            <span id="closeModal" style="position:absolute; top:1rem; right:1.5rem; font-size:1.5rem; cursor:pointer; color:#888;">&times;</span>
+            <h2 style="margin-bottom:1.5rem;">Thêm sự kiện</h2>
+            <form id="eventForm">
+                <div style="margin-bottom:1rem;">
+                    <label>Loại sự kiện</label>
+                    <input type="text" id="eventType" required style="width:100%; padding:0.5rem; border-radius:6px; border:1px solid #ccc;">
+                </div>
+                <div style="margin-bottom:1rem;">
+                    <label>Ngày sự kiện</label>
+                    <input type="date" id="eventDate" required style="width:100%; padding:0.5rem; border-radius:6px; border:1px solid #ccc;">
+                </div>
+                <div style="margin-bottom:1rem;">
+                    <label>Ghi chú</label>
+                    <textarea id="eventNote" rows="3" style="width:100%; padding:0.5rem; border-radius:6px; border:1px solid #ccc;"></textarea>
+                </div>
+                <div style="margin-bottom:1.5rem;">
+                    <label>Hình ảnh</label>
+                    <input type="file" id="eventImage" accept="image/*" style="width:100%;">
+                </div>
+                <button type="submit" style="background:#8ec3c9; color:#fff; border:none; border-radius:8px; padding:0.7rem 2.2rem; font-size:1.1rem; cursor:pointer;">Lưu sự kiện</button>
+            </form>
+        </div>
+    </div>
+    <script src="../js/db.editor.js"></script>
+</body>
+</html>

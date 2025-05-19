@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Người Dùng - Gia Phả Số</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg fixed-top">
+            <div class="container">
+                <img src="../../assets/images/Logo.png" alt="logo" height="40" class="me-2">
+                <a class="navbar-brand" href="#">Gia Phả Số</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#my-tree">Gia phả của tôi</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#shared">Gia phả được chia sẻ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#profile">Thông tin cá nhân</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex">
+                        <a href="../../index.html" class="btn btn-login">Đăng xuất</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="mt-5 pt-5">
+        <div class="container">
+            <!-- Phần Gia phả của tôi -->
+            <section id="my-tree" class="py-5">
+                <h2 class="text-center mb-5">Gia Phả Của Tôi</h2>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body text-center">
+                                <i class="fas fa-sitemap fa-3x mb-3" style="color: var(--primary-color)"></i>
+                                <h4 class="card-title">Tạo Cây Gia Phả</h4>
+                                <p class="card-text">Tạo và chỉnh sửa cây gia phả của bạn</p>
+                                <a href="#" class="btn cta-button">Tạo mới</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body text-center">
+                                <i class="fas fa-images fa-3x mb-3" style="color: var(--primary-color)"></i>
+                                <h4 class="card-title">Thêm Kỷ Niệm</h4>
+                                <p class="card-text">Lưu trữ hình ảnh và tài liệu gia đình</p>
+                                <a href="#" class="btn cta-button">Thêm mới</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body text-center">
+                                <i class="fas fa-users fa-3x mb-3" style="color: var(--primary-color)"></i>
+                                <h4 class="card-title">Quản Lý Thành Viên</h4>
+                                <p class="card-text">Thêm và chỉnh sửa thông tin thành viên</p>
+                                <a href="#" class="btn cta-button">Quản lý</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Phần Gia phả được chia sẻ -->
+            <section id="shared" class="py-5">
+                <h2 class="text-center mb-5">Gia Phả Được Chia Sẻ</h2>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card border-0 shadow">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Tên gia phả</th>
+                                                <th>Người chia sẻ</th>
+                                                <th>Ngày chia sẻ</th>
+                                                <th>Quyền truy cập</th>
+                                                <th>Thao tác</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Gia phả họ Nguyễn</td>
+                                                <td>Nguyễn Văn A</td>
+                                                <td>01/01/2024</td>
+                                                <td>Xem</td>
+                                                <td>
+                                                    <a href="#" class="btn btn-sm btn-primary">Xem</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Phần Thông tin cá nhân -->
+            <section id="profile" class="py-5">
+                <h2 class="text-center mb-5">Thông Tin Cá Nhân</h2>
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="card border-0 shadow">
+                            <div class="card-body p-5">
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="name" class="form-label">Họ và tên</label>
+                                        <input type="text" class="form-control" id="name" value="Nguyễn Văn A" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="email" value="nguyenvana@example.com" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="phone" class="form-label">Số điện thoại</label>
+                                        <input type="tel" class="form-control" id="phone">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="address" class="form-label">Địa chỉ</label>
+                                        <textarea class="form-control" id="address" rows="3"></textarea>
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-lg cta-button">Cập nhật thông tin</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Bootstrap JS và Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+<p>Users</p>

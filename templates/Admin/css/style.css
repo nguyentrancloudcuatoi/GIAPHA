@@ -1,0 +1,353 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* Mobile Menu Styles */
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1000;
+}
+
+.menu-btn {
+    background: none;
+    border: none;
+    color: #c2b280;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.menu-btn:hover {
+    background-color: rgba(78, 115, 223, 0.1);
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 250px;
+    background-color: #c2b280;
+    color: white;
+    padding: 1.5rem;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    overflow-y: auto;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.logo {
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.logo img {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    display: block;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.05);
+}
+
+.nav-links {
+    margin-top: 2rem;
+    list-style: none;
+    padding: 0;
+}
+
+.nav-links li {
+    margin: 0.2rem 0;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.nav-links li a {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 1.2rem;
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    border-radius: 12px;
+}
+
+.nav-links li a i {
+    margin-right: 12px;
+    font-size: 1.2rem;
+    width: 24px;
+    text-align: center;
+}
+
+.nav-links li:hover a {
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: translateX(5px);
+}
+
+.nav-links li.active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.nav-links li.active a {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* Main Content Styles */
+.main-content {
+    margin-left: 250px;
+    padding: 3rem 4vw;
+    background: #f8f9fc;
+    min-height: 100vh;
+    width: calc(100% - 250px);
+    transition: all 0.3s ease;
+}
+
+/* Page Title */
+.page-title {
+    font-size: 2.2rem;
+    color: #2d3748;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.stat-card {
+    background: white;
+    padding: 1.8rem;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.stat-icon {
+    font-size: 2.5rem;
+    color: #4e73df;
+    background: rgba(78, 115, 223, 0.1);
+    padding: 1rem;
+    border-radius: 12px;
+}
+
+.stat-info h3 {
+    color: #718096;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.stat-number {
+    color: #2d3748;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* Charts Container */
+.charts-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.chart-card {
+    background: white;
+    padding: 1.8rem;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.chart-card h3 {
+    color: #2d3748;
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+/* Recent Activities */
+.recent-activities {
+    background: white;
+    padding: 1.8rem;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.recent-activities h2 {
+    color: #2d3748;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.activities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.activity-card {
+    background: #f8f9fc;
+    padding: 1.5rem;
+    border-radius: 12px;
+}
+
+.activity-card h3 {
+    color: #4a5568;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.activity-list {
+    list-style: none;
+    padding: 0;
+}
+
+.activity-list li {
+    padding: 1rem 0;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.activity-list li:last-child {
+    border-bottom: none;
+}
+
+.activity-name {
+    color: #2d3748;
+    font-weight: 500;
+}
+
+.activity-date {
+    color: #718096;
+    font-size: 0.9rem;
+}
+
+.activity-owner {
+    color: #4e73df;
+    font-size: 0.9rem;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 1024px) {
+    .charts-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .page-title {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .stat-card {
+        padding: 1.5rem;
+    }
+
+    .stat-icon {
+        font-size: 2rem;
+        padding: 0.8rem;
+    }
+
+    .stat-number {
+        font-size: 1.5rem;
+    }
+
+    .chart-card,
+    .recent-activities {
+        padding: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .activities-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-card {
+        padding: 1.2rem;
+    }
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    .mobile-menu {
+        display: block;
+    }
+
+    .sidebar {
+        transform: translateX(-100%);
+        width: 280px;
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 5rem 1rem 2rem 1rem;
+    }
+
+    .sidebar.active::after {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 280px;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: -1;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .main-content {
+        padding: 4rem 0.8rem 1.5rem 0.8rem;
+    }
+}

@@ -1,0 +1,110 @@
+/* Phả ký styles */
+.phaky-filter {
+    padding: 0.7rem 1.5rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    min-width: 180px;
+    cursor: pointer;
+}
+
+.event-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    display: flex;
+    transition: transform 0.3s ease;
+}
+
+.event-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.event-image {
+    width: 200px;
+    min-width: 200px;
+    height: 200px;
+}
+
+.event-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.event-info {
+    padding: 1.5rem;
+    flex: 1;
+}
+
+.event-info h3 {
+    font-size: 1.4rem;
+    color: #2d3748;
+    margin-bottom: 1rem;
+}
+
+.event-date, .event-member {
+    color: #718096;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.event-note {
+    margin-top: 1rem;
+    color: #4a5568;
+    line-height: 1.6;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    .event-card {
+        flex-direction: column;
+    }
+    
+    .event-image {
+        width: 100%;
+        height: 200px;
+    }
+    
+    .phaky-header {
+        flex-wrap: wrap;
+    }
+    
+    .phaky-filter {
+        width: 100%;
+    }
+}
+
+/* Modal styles */
+.modal {
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+#eventForm label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #4a5568;
+    font-weight: 500;
+}
+
+#eventForm input[type="text"],
+#eventForm input[type="date"],
+#eventForm textarea {
+    transition: border-color 0.3s ease;
+}
+
+#eventForm input[type="text"]:focus,
+#eventForm input[type="date"]:focus,
+#eventForm textarea:focus {
+    border-color: #8ec3c9;
+    outline: none;
+}
