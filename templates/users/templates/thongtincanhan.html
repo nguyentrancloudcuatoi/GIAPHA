@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Người Dùng - Gia Phả Số</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/thongtin.css">
+    <script src="../js/profile.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg fixed-top">
+            <div class="container">
+                <a href="./index.html"><img src="../../../assets/images/Logo.png" alt="logo" height="40" class="me-2">
+                <a class="navbar-brand" href="../index.html">Gia Phả Số</a></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../index.html">Giới thiệu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../templates/caygiapha.html">Cây Gia Phả</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../templates/sukien.html">Sự Kiện</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex">
+                        <div class="d-flex">
+                            <div class="avatar-container">
+                                <a href="#" class="avatar-link" id="avatarLink">
+                                    <img src="../../../assets/images/avatar-an-danh.jpg" alt="User Avatar" class="avatar-img">
+                                </a>
+                                <div class="popup-menu" id="popupMenu">
+                                    <button onclick="handleLogout()">
+                                        <i class="fas fa-sign-out-alt"></i> Đăng Xuất
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+    <main class="mt-5 pt-5">
+        <div class="container">
+            <!-- Phần Thông tin cá nhân -->
+            <section id="profile" class="py-5">
+                <h2 class="text-center mb-5">Thông Tin Cá Nhân</h2>
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="card border-0 shadow">
+                            <div class="card-body p-5">
+                                <form id="profileForm" method="POST">
+                                    <div class="mb-3">
+                                        <label for="name" class="form-label">Họ và tên</label>
+                                        <input type="text" class="form-control" id="name" value="Nguyễn Văn A" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="email" value="nguyenvana@example.com" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="phone" class="form-label">Số điện thoại</label>
+                                        <input type="tel" class="form-control" id="phone">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="address" class="form-label">Địa chỉ</label>
+                                        <textarea class="form-control" id="address" rows="3"></textarea>
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-lg cta-button">Cập nhật thông tin</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Bootstrap JS và Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/thongtin.js"></script>
+</body>
+</html>

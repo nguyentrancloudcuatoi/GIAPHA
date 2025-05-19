@@ -6,31 +6,44 @@
     <title>Trang Người Dùng - Gia Phả Số</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../users/css/style.css">
+    <link rel="stylesheet" href="../css/gioithieu.css">
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-lg fixed-top">
             <div class="container">
-                <img src="../../assets/images/Logo.png" alt="logo" height="40" class="me-2">
-                <a class="navbar-brand" href="#">Gia Phả Số</a>
+                <a href="./index.html"><img src="../../../assets/images/Logo.png" alt="logo" height="40" class="me-2">
+                    <a class="navbar-brand" href="./index.html">Gia Phả Số</a></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav mx-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#my-tree">Gia phả của tôi</a>
+                            <a class="nav-link" href="./index.html">Giới thiệu</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#shared">Gia phả được chia sẻ</a>
+                            <a class="nav-link" href="../users/templates/caygiapha.html">Cây Gia Phả</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#profile">Thông tin cá nhân</a>
+                            <a class="nav-link" href="../users/templates/sukien.html">Sự Kiện</a>
                         </li>
                     </ul>
                     <div class="d-flex">
-                        <a href="../../index.html" class="btn btn-login">Đăng xuất</a>
+                        <div class="avatar-container">
+                            <a href="#" class="avatar-link" id="avatarLink">
+                                <img src="../../../assets/images/avatar-an-danh.jpg" alt="User Avatar" class="avatar-img">
+                            </a>
+                            <div class="popup-menu" id="popupMenu">
+                                <button onclick="window.location.href='../users/templates/thongtincanhan.html'">
+                                    <i class="fas fa-cog"></i> Cài Đặt
+                                </button>
+                                <button onclick="window.location.href='/index.html'">
+                                    <i class="fas fa-sign-out-alt"></i> Đăng Xuất
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -39,109 +52,104 @@
 
     <main class="mt-5 pt-5">
         <div class="container">
-            <!-- Phần Gia phả của tôi -->
-            <section id="my-tree" class="py-5">
-                <h2 class="text-center mb-5">Gia Phả Của Tôi</h2>
-                <div class="row g-4">
-                    <div class="col-md-4">
-                        <div class="card h-100 border-0 shadow-sm">
-                            <div class="card-body text-center">
-                                <i class="fas fa-sitemap fa-3x mb-3" style="color: var(--primary-color)"></i>
-                                <h4 class="card-title">Tạo Cây Gia Phả</h4>
-                                <p class="card-text">Tạo và chỉnh sửa cây gia phả của bạn</p>
-                                <a href="#" class="btn cta-button">Tạo mới</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card h-100 border-0 shadow-sm">
-                            <div class="card-body text-center">
-                                <i class="fas fa-images fa-3x mb-3" style="color: var(--primary-color)"></i>
-                                <h4 class="card-title">Thêm Kỷ Niệm</h4>
-                                <p class="card-text">Lưu trữ hình ảnh và tài liệu gia đình</p>
-                                <a href="#" class="btn cta-button">Thêm mới</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card h-100 border-0 shadow-sm">
-                            <div class="card-body text-center">
-                                <i class="fas fa-users fa-3x mb-3" style="color: var(--primary-color)"></i>
-                                <h4 class="card-title">Quản Lý Thành Viên</h4>
-                                <p class="card-text">Thêm và chỉnh sửa thông tin thành viên</p>
-                                <a href="#" class="btn cta-button">Quản lý</a>
-                            </div>
-                        </div>
-                    </div>
+            <!-- Hero Section -->
+            <section class="hero-section text-center py-5 mb-5">
+                <div class="hero-content">
+                    <h1 class="display-4 mb-4" id="tenGiaPha">Dòng Họ Nguyễn</h1>
+                    <p class="lead">"Gia phong truyền thống - Đạo đức muôn đời"</p>
                 </div>
             </section>
 
-            <!-- Phần Gia phả được chia sẻ -->
-            <section id="shared" class="py-5">
-                <h2 class="text-center mb-5">Gia Phả Được Chia Sẻ</h2>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card border-0 shadow">
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>Tên gia phả</th>
-                                                <th>Người chia sẻ</th>
-                                                <th>Ngày chia sẻ</th>
-                                                <th>Quyền truy cập</th>
-                                                <th>Thao tác</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Gia phả họ Nguyễn</td>
-                                                <td>Nguyễn Văn A</td>
-                                                <td>01/01/2024</td>
-                                                <td>Xem</td>
-                                                <td>
-                                                    <a href="#" class="btn btn-sm btn-primary">Xem</a>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+            <!-- Giới thiệu về cây gia phả -->
+            <section class="intro-section py-5">
+                <div class="intro-content">
+                    <div class="family-overview mb-5">
+                        <div class="section-header text-center mb-4">
+                            <h2 class="section-title">Tổng Quan Về Dòng Họ</h2>
+                            <div class="section-divider"></div>
+                        </div>
+                        <div class="row align-items-center">
+                            <div class="col-md-6">
+                                <p class="lead" id="tongQuan">
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-5">
+                        <div class="col-md-6">
+                            <div class="info-card p-4 h-100">
+                                <h3 class="mb-3">Nguồn Gốc Và Lịch Sử</h3>
+                                <p id="nguonGoc">
+                                </p>
+                                <ul class="list-unstyled mt-3" id="chiNhanh">
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-card p-4 h-100">
+                                <h3 class="mb-3">Truyền Thống Và Giá Trị</h3>
+                                <p id="truyenThong">
+                                </p>
+                                <div class="values-list mt-3" id="giaTriList">
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
 
-            <!-- Phần Thông tin cá nhân -->
-            <section id="profile" class="py-5">
-                <h2 class="text-center mb-5">Thông Tin Cá Nhân</h2>
-                <div class="row justify-content-center">
-                    <div class="col-md-8">
-                        <div class="card border-0 shadow">
-                            <div class="card-body p-5">
-                                <form>
-                                    <div class="mb-3">
-                                        <label for="name" class="form-label">Họ và tên</label>
-                                        <input type="text" class="form-control" id="name" value="Nguyễn Văn A" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="email" class="form-label">Email</label>
-                                        <input type="email" class="form-control" id="email" value="nguyenvana@example.com" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="phone" class="form-label">Số điện thoại</label>
-                                        <input type="tel" class="form-control" id="phone">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="address" class="form-label">Địa chỉ</label>
-                                        <textarea class="form-control" id="address" rows="3"></textarea>
-                                    </div>
-                                    <div class="text-center">
-                                        <button type="submit" class="btn btn-lg cta-button">Cập nhật thông tin</button>
-                                    </div>
-                                </form>
+                    <div class="family-branches mb-5">
+                        <div class="section-header text-center mb-4">
+                            <h2 class="section-title">Các Chi Nhánh Chính</h2>
+                            <div class="section-divider"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8 mx-auto">
+                                <p class="text-center mb-4">
+                                    Hiện nay, dòng họ chúng ta có 5 chi nhánh chính, phân bố tại các địa phương khác nhau. Mỗi chi nhánh đều có những đặc điểm riêng nhưng vẫn giữ được sự gắn kết chặt chẽ với dòng họ chính. Các chi nhánh thường xuyên tổ chức các hoạt động giao lưu, gặp gỡ để tăng cường tình đoàn kết.
+                                </p>
                             </div>
+                        </div>
+                    </div>
+
+                    <div class="family-events">
+                        <div class="section-header text-center mb-4">
+                            <h2 class="section-title">Sự Kiện Quan Trọng</h2>
+                            <div class="section-divider"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="event-card p-4 mb-4">
+                                    <h4 class="mb-3">Lễ Giỗ Tổ</h4>
+                                    <p>
+                                        Được tổ chức vào ngày 15 tháng 3 âm lịch hàng năm tại nhà thờ họ ở Đông Sơn, Thanh Hóa. Đây là dịp để con cháu tưởng nhớ công ơn tổ tiên và gặp gỡ, giao lưu.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="family-history-content">
+                                    <h4 class="mb-3">Di Sản Văn Hóa</h4>
+                                    <p class="history-text">
+                                        Dòng họ chúng ta tự hào với một di sản văn hóa phong phú, được truyền từ đời này sang đời khác. Những giá trị truyền thống, phong tục tập quán và những câu chuyện lịch sử được gìn giữ và phát huy, tạo nên bản sắc riêng của dòng họ.
+                                    </p>
+                                    <p class="history-text">
+                                        Qua nhiều thế hệ, dòng họ đã đóng góp nhiều nhân tài cho đất nước, từ các vị quan trong triều đình xưa đến các nhà khoa học, giáo dục và doanh nhân thành đạt ngày nay.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="event-card p-4 mb-4">
+                                    <h4 class="mb-3">Họp Mặt Đầu Năm</h4>
+                                    <p>
+                                        Tổ chức vào mùng 3 Tết Nguyên đán, là dịp để các thành viên trong dòng họ gặp gỡ, chúc tụng nhau năm mới và bàn bạc kế hoạch phát triển dòng họ.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center mt-4">
+                            <a href="../users/templates/sukien.html" class="btn btn-primary btn-lg">
+                                Xem Tất Cả Sự Kiện
+                                <i class="fas fa-arrow-right ms-2"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -151,6 +159,40 @@
 
     <!-- Bootstrap JS và Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/script.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Lấy danh sách gia phả từ localStorage
+        const danhSachGiaPha = JSON.parse(localStorage.getItem('danhSachGiaPha') || '[]');
+        
+        // Lấy gia phả đang được chọn (giả sử có một biến lưu ID gia phả đang xem)
+        const currentGiaPhaId = localStorage.getItem('currentGiaPhaId');
+        
+        if (currentGiaPhaId) {
+            const giaPha = danhSachGiaPha.find(gp => gp.id === currentGiaPhaId);
+            if (giaPha) {
+                document.getElementById('tenGiaPha').textContent = `Dòng Họ ${giaPha.ten}`;
+            }
+        }
+    });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const avatarLink = document.getElementById('avatarLink');
+            const popupMenu = document.getElementById('popupMenu');
+            
+            avatarLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                popupMenu.classList.toggle('show');
+            });
+
+            // Đóng popup khi click ra ngoài
+            document.addEventListener('click', function(e) {
+                if (!avatarLink.contains(e.target) && !popupMenu.contains(e.target)) {
+                    popupMenu.classList.remove('show');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
-<p>Users</p>

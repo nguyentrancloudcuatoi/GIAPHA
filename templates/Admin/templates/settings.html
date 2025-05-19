@@ -26,7 +26,6 @@
             <li><a href="/templates/Admin/index.html"><i class="fas fa-home"></i> Trang chủ</a></li>
             <li><a href="/templates/Admin/templates/users.html"><i class="fas fa-users"></i> Quản lý tài khoản</a></li>
             <li><a href="/templates/Admin/templates/quanlygiapha.html"><i class="fas fa-sitemap"></i> Quản lý gia phả</a></li>
-            <li><a href="/templates/Admin/templates/thongke.html"><i class="fas fa-chart-bar"></i> Thống kê</a></li>
         </ul>
         <div style="position: absolute; bottom: 2rem; width: calc(100% - 3rem);">
             <ul class="nav-links">
@@ -184,30 +183,6 @@
             </div>
         </div>
     </main>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuBtn = document.querySelector('.menu-btn');
-            const sidebar = document.querySelector('.sidebar');
-            const navLinks = document.querySelectorAll('.nav-links li');
-            
-            menuBtn.addEventListener('click', function() {
-                sidebar.classList.toggle('active');
-            });
-
-            document.addEventListener('click', function(event) {
-                if (!sidebar.contains(event.target) && !menuBtn.contains(event.target) && sidebar.classList.contains('active')) {
-                    sidebar.classList.remove('active');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    navLinks.forEach(l => l.classList.remove('active'));
-                    this.classList.add('active');
-                });
-            });
-        });
-    </script>
+    <script src="../../Admin/js/settings.js"></script>
 </body>
 </html>

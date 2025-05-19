@@ -160,3 +160,162 @@ function formatDate(dateString) {
         year: 'numeric'
     });
 }
+// Khởi tạo các biến và hằng số
+let events = JSON.parse(localStorage.getItem('events') || '[]');
+const eventList = document.getElementById('eventList');
+const noEventMsg = document.getElementById('noEventMsg');
+const addEventBtn = document.getElementById('addEventBtn');
+const eventModal = document.getElementById('eventModal');
+const closeModal = document.getElementById('closeModal');
+const eventForm = document.getElementById('eventForm');
+
+// Hàm hiển thị modal thêm sự kiện
+function showAddEventModal() {
+    eventModal.style.display = 'flex';
+}
+
+// Hàm đóng modal
+function closeEventModal() {
+    eventModal.style.display = 'none';
+    eventForm.reset();
+}
+
+// Hàm tạo thẻ sự kiện
+function createEventCard(event) {
+    return `
+        <div class="event-card">
+            <div class="event-image">
+                <img src="${event.image || '../../../assets/images/default-event.jpg'}" alt="Hình ảnh sự kiện">
+            </div>
+            <div class="event-info">
+                <h3>${event.type}</h3>
+                <div class="event-date">
+                    <i class="fas fa-calendar"></i>
+                    ${new Date(event.date).toLocaleDateString('vi-VN')}
+                </div>
+                <div class="event-member">
+                    <i class="fas fa-user"></i>
+                    ${event.member || 'Chưa chọn thành viên'}
+                </div>
+                <div class="event-note">${event.note}</div>
+            </div>
+        </div>
+    `;
+}
+
+// Hàm cập nhật danh sách sự kiện
+function updateEventList() {
+    if (events.length === 0) {
+        noEventMsg.style.display = 'block';
+        eventList.innerHTML = '';
+        return;
+    }
+
+    noEventMsg.style.display = 'none';
+    eventList.innerHTML = events.map(event => createEventCard(event)).join('');
+}
+
+// Hàm lọc sự kiện
+function filterEvents() {
+    const timeFilter = document.getElementById('filterTime').value;
+    const memberFilter = document.getElementById('filterMember').value;
+    const typeFilter = document.getElementById('filterType').value;
+
+    let filteredEvents = [...events];
+
+    if (timeFilter !== 'Lọc theo thời gian') {
+        // Thêm logic lọc theo thời gian
+    }
+
+    if (memberFilter !== 'Lọc theo thành viên') {
+        filteredEvents = filteredEvents.filter(event => event.member === memberFilter);
+    }
+
+    if (typeFilter !== 'Lọc theo sự kiện') {
+        filteredEvents = filteredEvents.filter(event => event.type === typeFilter);
+    }
+
+    if (filteredEvents.length === 0) {
+        noEventMsg.style.display = 'block';
+        eventList.innerHTML = '';
+        return;
+    }
+
+    noEventMsg.style.display = 'none';
+    eventList.innerHTML = filteredEvents.map(event => createEventCard(event)).join('');
+}
+
+// Xử lý sự kiện submit form
+eventForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const newEvent = {
+        id: Date.now(),
+        type: document.getElementById('eventType').value,
+        date: document.getElementById('eventDate').value,
+        note: document.getElementById('eventNote').value,
+        image: null
+    };
+
+    // Xử lý upload hình ảnh
+    const imageFile = document.getElementById('eventImage').files[0];
+    if (imageFile) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            newEvent.image = e.target.result;
+            events.push(newEvent);
+            localStorage.setItem('events', JSON.stringify(events));
+            updateEventList();
+            closeEventModal();
+        };
+        reader.readAsDataURL(imageFile);
+    } else {
+        events.push(newEvent);
+        localStorage.setItem('events', JSON.stringify(events));
+        updateEventList();
+        closeEventModal();
+    }
+});
+
+// Khởi tạo các event listener
+addEventBtn.addEventListener('click', showAddEventModal);
+closeModal.addEventListener('click', closeEventModal);
+document.getElementById('filterTime').addEventListener('change', filterEvents);
+document.getElementById('filterMember').addEventListener('change', filterEvents);
+document.getElementById('filterType').addEventListener('change', filterEvents);
+
+// Khởi tạo danh sách sự kiện khi trang được load
+document.addEventListener('DOMContentLoaded', function() {
+    updateEventList();
+    
+    // Populate filter options
+    const memberSelect = document.getElementById('filterMember');
+    const typeSelect = document.getElementById('filterType');
+    
+    // Thêm các option cho filter thời gian
+    const timeSelect = document.getElementById('filterTime');
+    const timeOptions = ['Hôm nay', 'Tuần này', 'Tháng này', 'Năm nay'];
+    timeOptions.forEach(option => {
+        const optionElement = document.createElement('option');
+        optionElement.textContent = option;
+        timeSelect.appendChild(optionElement);
+    });
+    
+    // Lấy danh sách thành viên từ localStorage (nếu có)
+    const members = JSON.parse(localStorage.getItem('members') || '[]');
+    members.forEach(member => {
+        const option = document.createElement('option');
+        option.value = member.name;
+        option.textContent = member.name;
+        memberSelect.appendChild(option);
+    });
+    
+    // Lấy danh sách loại sự kiện unique từ events
+    const eventTypes = [...new Set(events.map(event => event.type))];
+    eventTypes.forEach(type => {
+        const option = document.createElement('option');
+        option.value = type;
+        option.textContent = type;
+        typeSelect.appendChild(option);
+    });
+});

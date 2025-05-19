@@ -351,3 +351,38 @@ body {
         padding: 4rem 0.8rem 1.5rem 0.8rem;
     }
 }
+
+.activity-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #e3e6f0;
+}
+
+.activity-item:last-child {
+    border-bottom: none;
+}
+
+.activity-item i {
+    font-size: 1.5rem;
+    color: #4e73df;
+    margin-right: 1rem;
+}
+
+.activity-info {
+    flex: 1;
+}
+
+.activity-title {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.activity-meta {
+    font-size: 0.875rem;
+    color: #858796;
+}
+
+.activity-meta span {
+    margin-right: 0.5rem;
+}

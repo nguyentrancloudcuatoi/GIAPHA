@@ -40,8 +40,8 @@ body {
 
 /* Sidebar Styles */
 .sidebar {
-    width: 250px;
-    background-color: #c2b280;
+    width: 280px; /* Tăng độ rộng sidebar */
+    background: linear-gradient(135deg, #c2b280, #b3a372); /* Thêm gradient cho sidebar */
     color: white;
     padding: 1.5rem;
     height: 100vh;
@@ -124,7 +124,9 @@ body {
 
 /* Main Content Styles */
 .main-content {
-    margin-left: 250px;
+    margin-left: 280px; /* Điều chỉnh theo độ rộng sidebar mới */
+    width: calc(100% - 280px);
+    background: #f8f9fc; /* Màu nền nhẹ nhàng hơn */
     padding: 3rem 4vw 3rem 4vw;
     background: #f7f7f7;
     min-height: 100vh;

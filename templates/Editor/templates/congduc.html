@@ -28,7 +28,6 @@
             <li><a href="/templates/Editor/templates/phaky.html"><i class="fas fa-list-alt"></i> Phả ký</a></li>
             <li><a href="/templates/Editor/templates/congduc.html"><i class="fas fa-hand-holding-heart"></i> Công đức</a></li>
             <li><a href="/templates/Editor/templates/ngoaipha.html"><i class="fas fa-book"></i> Ngoại phả</a></li>
-            <li><a href="/templates/Editor/templates/hinhanh.html"><i class="fas fa-image"></i> Hình ảnh</a></li>
         </ul>
         <div style="position: absolute; bottom: 2rem; width: calc(100% - 3rem);">
             <ul class="nav-links">
@@ -46,6 +45,10 @@
             <button class="filter-btn">
                 <i class="fas fa-filter"></i>
                 Lọc
+            </button>
+            <button class="add-donation-btn">
+                <i class="fas fa-plus"></i>
+                Thêm công đức mới
             </button>
         </div>
         <div class="table-wrapper">
@@ -96,49 +99,31 @@
             </table>
         </div>
     </main>
-    <script>
-    // Dữ liệu mẫu, có thể thay bằng API hoặc localStorage
-    let donations = JSON.parse(localStorage.getItem('donations') || '[]');
 
-    function renderDonations() {
-        const tbody = document.getElementById('donationTableBody');
-        tbody.innerHTML = '';
-        if (donations.length === 0) return;
-        donations.forEach(d => {
-            const tr = document.createElement('tr');
-            tr.innerHTML = `<td class="left-padding">${d.name}</td><td class="left-padding">${d.date}</td><td class="left-padding money-col">${d.amount}</td>`;
-            tbody.appendChild(tr);
-        });
-    }
-
-    // Hàm giả lập thêm đóng góp mới
-    function addDonation(name, date, amount) {
-        donations.push({ name, date, amount });
-        localStorage.setItem('donations', JSON.stringify(donations));
-        renderDonations();
-    }
-
-    // Mobile menu toggle
-    document.querySelector('.menu-btn').addEventListener('click', function() {
-        document.querySelector('.sidebar').classList.toggle('active');
-    });
-
-    // Close sidebar when clicking outside on mobile
-    document.addEventListener('click', function(event) {
-        const sidebar = document.querySelector('.sidebar');
-        const mobileMenu = document.querySelector('.mobile-menu');
-        
-        if (window.innerWidth <= 768 && 
-            !sidebar.contains(event.target) && 
-            !mobileMenu.contains(event.target) && 
-            sidebar.classList.contains('active')) {
-            sidebar.classList.remove('active');
-        }
-    });
-
-    // Khởi tạo bảng khi load trang
-    renderDonations();
-    // Ví dụ: addDonation('Nguyễn Văn A', '2024-06-01', '1.000.000đ');
-    </script>
+    <!-- Modal Form -->
+    <div class="modal" id="donationModal">
+        <div class="modal-content">
+            <h2>Thông tin công đức</h2>
+            <form id="donationForm">
+                <div class="form-group">
+                    <label for="name">Tên người công đức:</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="date">Ngày công đức:</label>
+                    <input type="date" id="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="amount">Số tiền:</label>
+                    <input type="number" id="amount" min="0" step="1000" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="save-btn">Lưu</button>
+                    <button type="button" class="cancel-btn">Hủy</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="../js/congduc.js"></script>
 </body>
 </html>

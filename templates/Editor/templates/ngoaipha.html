@@ -28,7 +28,6 @@
             <li><a href="/templates/Editor/templates/phaky.html"><i class="fas fa-list-alt"></i> Phả ký</a></li>
             <li><a href="/templates/Editor/templates/congduc.html"><i class="fas fa-hand-holding-heart"></i> Công đức</a></li>
             <li><a href="/templates/Editor/templates/ngoaipha.html"><i class="fas fa-book"></i> Ngoại phả</a></li>
-            <li><a href="/templates/Editor/templates/hinhanh.html"><i class="fas fa-image"></i> Hình ảnh</a></li>
         </ul>
         <div style="position: absolute; bottom: 2rem; width: calc(100% - 3rem);">
             <ul class="nav-links">
@@ -40,12 +39,18 @@
     <main class="main-content">
         <h1 class="page-title">Ngoại phả</h1>
         <div class="center-block">
-            <button class="add-post-btn">+ Thêm bài viết</button>
+            <button class="add-post-btn" onclick="openAddPostModal()">+ Thêm bài viết</button>
             <div class="search-container">
-                <input type="text" class="search-input" placeholder="Tìm bài viết">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" placeholder="Tìm bài viết" onkeyup="searchPosts()">
             </div>
         </div>
-        <div class="empty-state">
+        
+        <div id="posts-container" class="posts-container">
+            <!-- Bài viết sẽ được thêm vào đây -->
+        </div>
+
+        <div class="empty-state" id="empty-state">
             <svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect x="20" y="40" width="140" height="120" rx="18" fill="#fff" stroke="#bbb" stroke-width="2.5"/>
                 <line x1="40" y1="70" x2="140" y2="70" stroke="#bbb" stroke-width="2"/>
@@ -56,5 +61,32 @@
             <div class="empty-state-text">Chưa có bài viết nào</div>
         </div>
     </main>
+
+    <!-- Modal thêm/chỉnh sửa bài viết -->
+    <div class="modal" id="postModal">
+        <div class="modal-content">
+            <h2 id="modalTitle">Thêm bài viết mới</h2>
+            <form id="postForm" onsubmit="handlePostSubmit(event)">
+                <div class="form-group">
+                    <label>Tiêu đề:</label>
+                    <input type="text" id="postTitle" required>
+                </div>
+                <div class="form-group">
+                    <label>Nội dung:</label>
+                    <textarea id="postContent" rows="6" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Ngày tạo:</label>
+                    <input type="date" id="postDate" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Lưu</button>
+                    <button type="button" class="btn-secondary" onclick="closePostModal()">Hủy</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/ngoaipha.js"></script>
 </body>
 </html>

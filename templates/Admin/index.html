@@ -28,7 +28,6 @@
             <li><a href="../Admin/index.html"><i class="fas fa-home"></i> Trang chủ</a></li>
             <li><a href="../Admin/templates/users.html"><i class="fas fa-users"></i> Quản lý tài khoản</a></li>
             <li><a href="../Admin/templates/quanlygiapha.html"><i class="fas fa-sitemap"></i> Quản lý gia phả</a></li>
-            <li><a href="../Admin/templates/thongke.html"><i class="fas fa-chart-bar"></i> Thống kê</a></li>
         </ul>
         <div style="position: absolute; bottom: 2rem; width: calc(100% - 3rem);">
             <ul class="nav-links">
@@ -47,28 +46,28 @@
                 <i class="fas fa-users"></i>
                 <div class="stat-info">
                     <h3>Tổng người dùng</h3>
-                    <p class="stat-number">5,234</p>
+                    <p class="stat-number" id="totalUsers">0</p>
                 </div>
             </div>
             <div class="stat-card">
                 <i class="fas fa-sitemap"></i>
                 <div class="stat-info">
                     <h3>Tổng gia phả</h3>
-                    <p class="stat-number">1,567</p>
+                    <p class="stat-number" id="totalTrees">0</p>
                 </div>
             </div>
             <div class="stat-card">
                 <i class="fas fa-user-plus"></i>
                 <div class="stat-info">
                     <h3>Người dùng mới (tháng)</h3>
-                    <p class="stat-number">245</p>
+                    <p class="stat-number" id="newUsers">0</p>
                 </div>
             </div>
             <div class="stat-card">
                 <i class="fas fa-chart-line"></i>
                 <div class="stat-info">
                     <h3>Tăng trưởng (tháng)</h3>
-                    <p class="stat-number">15%</p>
+                    <p class="stat-number" id="growthRate">0%</p>
                 </div>
             </div>
         </div>
@@ -95,42 +94,20 @@
                 <div class="activity-card">
                     <h3>Người dùng mới đăng ký</h3>
                     <ul class="activity-list">
-                        <li>
-                            <span class="activity-name">Nguyễn Văn A</span>
-                            <span class="activity-date">01/06/2024</span>
-                        </li>
-                        <li>
-                            <span class="activity-name">Trần Thị B</span>
-                            <span class="activity-date">30/05/2024</span>
-                        </li>
-                        <li>
-                            <span class="activity-name">Lê Văn C</span>
-                            <span class="activity-date">28/05/2024</span>
-                        </li>
+                        <!-- Danh sách sẽ được cập nhật động bằng JavaScript -->
                     </ul>
                 </div>
                 <div class="activity-card">
                     <h3>Gia phả mới tạo</h3>
                     <ul class="activity-list">
-                        <li>
-                            <span class="activity-name">Gia phả họ Nguyễn</span>
-                            <span class="activity-owner">Nguyễn Văn A</span>
-                            <span class="activity-date">01/06/2024</span>
-                        </li>
-                        <li>
-                            <span class="activity-name">Gia phả họ Trần</span>
-                            <span class="activity-owner">Trần Thị B</span>
-                            <span class="activity-date">30/05/2024</span>
-                        </li>
-                        <li>
-                            <span class="activity-name">Gia phả họ Lê</span>
-                            <span class="activity-owner">Lê Văn C</span>
-                            <span class="activity-date">28/05/2024</span>
-                        </li>
+                        <!-- Danh sách sẽ được cập nhật động khi có tính năng tạo gia phả -->
                     </ul>
                 </div>
             </div>
         </div>
     </main>
+    <script src="./js/main.js"></script>
+    <script src="./js/charts.js"></script>
+    <script src="./js/recent-activities.js"></script>
 </body>
 </html>

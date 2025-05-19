@@ -1,0 +1,67 @@
+/* Styles for Events Page */
+.event-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    height: 100%;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+}
+
+.event-icon {
+    color: var(--primary-color);
+    text-align: center;
+}
+
+.event-details {
+    color: #666;
+}
+
+.event-details i {
+    color: var(--primary-color);
+    width: 20px;
+}
+
+.upcoming-events .event-item {
+    transition: transform 0.3s ease;
+}
+
+.upcoming-events .event-item:hover {
+    transform: translateX(10px);
+}
+
+.event-date {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    min-width: 80px;
+}
+
+.event-date .date {
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: block;
+}
+
+.event-date .month {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+.event-info h4 {
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.event-info p {
+    color: #666;
+    margin: 0;
+}
+
+.event-info i {
+    color: var(--primary-color);
+}

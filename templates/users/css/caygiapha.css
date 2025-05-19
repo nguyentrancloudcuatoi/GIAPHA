@@ -1,0 +1,242 @@
+/* Biến CSS cho hai chế độ */
+:root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fc;
+    --text-primary: #2d3748;
+    --text-secondary: #4a5568;
+    --border-color: #e2e8f0;
+    --shadow-color: rgba(0, 0, 0, 0.05);
+    --btn-primary: linear-gradient(145deg, #4e73df, #3a5fd9);
+    --btn-secondary: linear-gradient(145deg, #858796, #717484);
+    --header-gradient: linear-gradient(to right, #4e73df, #36b9cc);
+}
+
+[data-theme="dark"] {
+    --bg-primary: #1a1c23;
+    --bg-secondary: #2a2d3a;
+    --text-primary: #e2e8f0;
+    --text-secondary: #a0aec0;
+    --border-color: #2d3748;
+    --shadow-color: rgba(0, 0, 0, 0.2);
+    --btn-primary: linear-gradient(145deg, #3a5fd9, #2e59d9);
+    --btn-secondary: linear-gradient(145deg, #717484, #5a5c6e);
+    --header-gradient: linear-gradient(to right, #3a5fd9, #2e59d9);
+}
+
+/* Theme switcher button */
+.theme-switch {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 12px;
+    border-radius: 50%;
+    background: var(--bg-primary);
+    border: 2px solid var(--border-color);
+    cursor: pointer;
+    box-shadow: 0 4px 6px var(--shadow-color);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.theme-switch i {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+}
+
+.theme-switch:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px var(--shadow-color);
+}
+
+/* Thiết lập cho container chứa sơ đồ */
+#myDiagramDiv {
+    width: 100%;
+    height: 700px;
+    background: linear-gradient(to bottom right, var(--bg-primary), var(--bg-secondary));
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    box-shadow: 0 10px 25px var(--shadow-color);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    margin: 20px 0;
+    position: relative;
+    overflow: hidden;
+    color: var(--text-primary);
+}
+
+#myDiagramDiv::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--header-gradient);
+    border-radius: 16px 16px 0 0;
+}
+
+/* Container chứa cây gia phả */
+.tree-container {
+    background: var(--bg-primary);
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px var(--shadow-color);
+    margin-top: 30px;
+    position: relative;
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+/* Phần điều khiển */
+.controls {
+    margin-bottom: 30px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 15px;
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    backdrop-filter: blur(5px);
+}
+
+/* Nút điều khiển */
+.btn {
+    padding: 14px 28px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.12);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: -100%;
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%);
+    transition: all 0.6s;
+}
+
+.btn:hover::after {
+    left: 100%;
+}
+
+.btn i {
+    font-size: 1.2em;
+    transition: transform 0.3s ease;
+}
+
+.btn:hover i {
+    transform: scale(1.2);
+}
+
+.btn-primary {
+    background: linear-gradient(145deg, #4e73df, #3a5fd9);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(145deg, #3a5fd9, #2e59d9);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(78, 115, 223, 0.3);
+}
+
+.btn-secondary {
+    background: linear-gradient(145deg, #858796, #717484);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(145deg, #717484, #5a5c6e);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(133, 135, 150, 0.3);
+}
+
+/* Hiệu ứng hover cho container */
+.tree-container:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+}
+
+/* Animation cho loading và transitions */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.tree-container {
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #myDiagramDiv {
+        height: 500px;
+        margin: 10px 0;
+    }
+    
+    .tree-container {
+        padding: 20px;
+        margin-top: 20px;
+    }
+    
+    .controls {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px;
+        gap: 15px;
+    }
+    
+    .btn {
+        width: 100%;
+        justify-content: center;
+        padding: 12px 20px;
+        font-size: 0.85rem;
+    }
+    
+    .theme-switch {
+        top: 10px;
+        right: 10px;
+        padding: 10px;
+    }
+}
+
+/* Animation cho chuyển đổi theme */
+.theme-transition {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hiệu ứng ripple cho theme switcher */
+.theme-switch::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    background: var(--text-primary);
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.5s ease;
+}
+
+.theme-switch:active::after {
+    transform: scale(2);
+    opacity: 0.2;
+}

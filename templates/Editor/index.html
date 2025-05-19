@@ -29,7 +29,6 @@
             <li><a href="/templates/Editor/templates/phaky.html"><i class="fas fa-list-alt"></i> Phả ký</a></li>
             <li><a href="/templates/Editor/templates/congduc.html"><i class="fas fa-hand-holding-heart"></i> Công đức</a></li>
             <li><a href="/templates/Editor/templates/ngoaipha.html"><i class="fas fa-book"></i> Ngoại phả</a></li>
-            <li><a href="/templates/Editor/templates/hinhanh.html"><i class="fas fa-image"></i> Hình ảnh</a></li>
         </ul>
         <div style="position: absolute; bottom: 2rem; width: calc(100% - 3rem);">
             <ul class="nav-links">
@@ -48,28 +47,28 @@
                 <i class="fas fa-users"></i>
                 <div class="stat-info">
                     <h3>Tổng thành viên</h3>
-                    <p class="stat-number">1,234</p>
+                    <p class="stat-number">0</p>
                 </div>
             </div>
             <div class="stat-card">
                 <i class="fas fa-hand-holding-heart"></i>
                 <div class="stat-info">
                     <h3>Tổng công đức</h3>
-                    <p class="stat-number">5,678,000đ</p>
+                    <p class="stat-number">0đ</p>
                 </div>
             </div>
             <div class="stat-card">
                 <i class="fas fa-user-plus"></i>
                 <div class="stat-info">
                     <h3>Thành viên mới (tháng)</h3>
-                    <p class="stat-number">45</p>
+                    <p class="stat-number">0</p>
                 </div>
             </div>
             <div class="stat-card">
                 <i class="fas fa-chart-line"></i>
                 <div class="stat-info">
                     <h3>Công đức (tháng)</h3>
-                    <p class="stat-number">1,200,000đ</p>
+                    <p class="stat-number">0đ</p>
                 </div>
             </div>
         </div>
@@ -96,38 +95,13 @@
                 <div class="activity-card">
                     <h3>Thành viên mới nhất</h3>
                     <ul class="activity-list">
-                        <li>
-                            <span class="activity-name">Nguyễn Văn A</span>
-                            <span class="activity-date">01/06/2024</span>
-                        </li>
-                        <li>
-                            <span class="activity-name">Trần Thị B</span>
-                            <span class="activity-date">30/05/2024</span>
-                        </li>
-                        <li>
-                            <span class="activity-name">Lê Văn C</span>
-                            <span class="activity-date">28/05/2024</span>
-                        </li>
+                        <!-- Danh sách thành viên sẽ được thêm vào đây động -->
                     </ul>
                 </div>
                 <div class="activity-card">
                     <h3>Công đức gần đây</h3>
                     <ul class="activity-list">
-                        <li>
-                            <span class="activity-name">Nguyễn Văn A</span>
-                            <span class="activity-amount">1,000,000đ</span>
-                            <span class="activity-date">01/06/2024</span>
-                        </li>
-                        <li>
-                            <span class="activity-name">Trần Thị B</span>
-                            <span class="activity-amount">500,000đ</span>
-                            <span class="activity-date">30/05/2024</span>
-                        </li>
-                        <li>
-                            <span class="activity-name">Lê Văn C</span>
-                            <span class="activity-amount">200,000đ</span>
-                            <span class="activity-date">28/05/2024</span>
-                        </li>
+                        <!-- Danh sách công đức sẽ được thêm vào đây động -->
                     </ul>
                 </div>
             </div>
@@ -143,7 +117,7 @@
                 labels: ['T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8', 'T9', 'T10', 'T11', 'T12'],
                 datasets: [{
                     label: 'Số lượng thành viên mới',
-                    data: [30, 45, 60, 35, 50, 45, 55, 40, 45, 50, 45, 40],
+                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                     borderColor: '#4e73df',
                     tension: 0.4,
                     fill: true,
@@ -173,7 +147,7 @@
                 labels: ['T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8', 'T9', 'T10', 'T11', 'T12'],
                 datasets: [{
                     label: 'Tổng công đức (triệu đồng)',
-                    data: [5, 7, 4, 6, 8, 5, 9, 7, 6, 8, 7, 9],
+                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                     backgroundColor: '#1cc88a',
                     borderRadius: 5
                 }]
@@ -230,5 +204,6 @@
             });
         });
     </script>
+    <script src="./js/dashboard.js"></script>
 </body>
 </html>

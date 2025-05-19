@@ -28,7 +28,6 @@
             <li><a href="/templates/Editor/templates/phaky.html"><i class="fas fa-list-alt"></i> Phả ký</a></li>
             <li><a href="/templates/Editor/templates/congduc.html"><i class="fas fa-hand-holding-heart"></i> Công đức</a></li>
             <li><a href="/templates/Editor/templates/ngoaipha.html"><i class="fas fa-book"></i> Ngoại phả</a></li>
-            <li><a href="/templates/Editor/templates/hinhanh.html"><i class="fas fa-image"></i> Hình ảnh</a></li>
         </ul>
         <div style="position: absolute; bottom: 2rem; width: calc(100% - 3rem);">
             <ul class="nav-links">
@@ -39,10 +38,23 @@
 
     <main class="main-content">
         <h1 class="page-title" style="font-size: 2.5rem; font-family: serif; margin-bottom: 1.5rem;">Quản lý thành viên</h1>
-        <div class="search-container">
-            <i class="fas fa-search search-icon"></i>
-            <input type="text" class="search-input" placeholder="Tìm kiếm thành viên...">
+        
+        <!-- Thanh công cụ -->
+        <div class="toolbar">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Tìm kiếm thành viên...">
+                <button id="searchBtn"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="filters">
+                <select id="statusFilter">
+                    <option value="all">Tất cả trạng thái</option>
+                    <option value="active">Đang hoạt động</option>
+                    <option value="inactive">Không hoạt động</option>
+                </select>
+            </div>
+            <button class="add-btn" id="addMemberBtn"><i class="fas fa-plus"></i> Thêm thành viên</button>
         </div>
+
         <div class="table-wrapper">
             <table>
                 <thead>
@@ -53,7 +65,7 @@
                         <th>Thao tác</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="memberTableBody">
                     <tr>
                         <td>Nguyễn Văn A</td>
                         <td>nguyenvana@email.com</td>
@@ -90,6 +102,51 @@
                 </tbody>
             </table>
         </div>
+
+        <!-- Modal thêm thành viên -->
+        <!-- Modal thêm thành viên -->
+        <div id="memberModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Thêm thành viên mới</h2>
+                <form id="memberForm">
+                    <div class="form-group">
+                        <label for="memberEmail">Email:</label>
+                        <input type="email" id="memberEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="memberRole">Vai trò trong gia phả:</label>
+                        <select id="memberRole" required>
+                            <option value="">-- Chọn vai trò --</option>
+                            <option value="ong_noi">Ông nội</option>
+                            <option value="ba_noi">Bà nội</option>
+                            <option value="ong_ngoai">Ông ngoại</option>
+                            <option value="ba_ngoai">Bà ngoại</option>
+                            <option value="cha">Cha</option>
+                            <option value="me">Mẹ</option>
+                            <option value="chu">Chú</option>
+                            <option value="bac">Bác</option>
+                            <option value="co">Cô</option>
+                            <option value="di">Dì</option>
+                            <option value="anh">Anh</option>
+                            <option value="chi">Chị</option>
+                            <option value="em">Em</option>
+                            <option value="chau">Cháu</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="memberGeneration">Đời thứ:</label>
+                        <input type="number" id="memberGeneration" min="1" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">Thêm</button>
+                        <button type="button" class="btn-secondary" onclick="closeModal()">Hủy</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </main>
+
+    <script src="../js/quanlythanhvien.js"></script>
 </body>
 </html>

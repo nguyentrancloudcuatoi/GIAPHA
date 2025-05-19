@@ -26,7 +26,6 @@
             <li><a href="/templates/Admin/index.html"><i class="fas fa-home"></i> Trang chủ</a></li>
             <li><a href="/templates/Admin/templates/users.html"><i class="fas fa-users"></i> Quản lý tài khoản</a></li>
             <li><a href="/templates/Admin/templates/quanlygiapha.html"><i class="fas fa-sitemap"></i> Quản lý gia phả</a></li>
-            <li><a href="/templates/Admin/templates/thongke.html"><i class="fas fa-chart-bar"></i> Thống kê</a></li>
         </ul>
         <div style="position: absolute; bottom: 2rem; width: calc(100% - 3rem);">
             <ul class="nav-links">
@@ -69,6 +68,7 @@
                         <th>Họ và tên</th>
                         <th>Email</th>
                         <th>Ngày đăng ký</th>
+                        <th>Role</th>
                         <th>Trạng thái</th>
                         <th>Thao tác</th>
                     </tr>
@@ -79,6 +79,7 @@
                         <td>Nguyễn Văn A</td>
                         <td>nguyenvana@email.com</td>
                         <td>01/06/2024</td>
+                        <td><span class="role admin">Admin</span></td>
                         <td><span class="status active">Hoạt động</span></td>
                         <td>
                             <button class="action-btn edit"><i class="fas fa-edit"></i></button>
@@ -91,6 +92,7 @@
                         <td>Trần Thị B</td>
                         <td>tranthib@email.com</td>
                         <td>30/05/2024</td>
+                        <td><span class="role user">User</span></td>
                         <td><span class="status locked">Đã khóa</span></td>
                         <td>
                             <button class="action-btn edit"><i class="fas fa-edit"></i></button>
@@ -112,29 +114,40 @@
         </div>
     </main>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuBtn = document.querySelector('.menu-btn');
-            const sidebar = document.querySelector('.sidebar');
-            const navLinks = document.querySelectorAll('.nav-links li');
-            
-            menuBtn.addEventListener('click', function() {
-                sidebar.classList.toggle('active');
-            });
+    <!-- Modal Thêm/Sửa người dùng -->
+    <div id="userModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle">Thêm người dùng mới</h2>
+            <form id="userForm">
+                <div class="form-group">
+                    <label for="userName">Họ và tên:</label>
+                    <input type="text" id="userName" required>
+                </div>
+                <div class="form-group">
+                    <label for="userEmail">Email:</label>
+                    <input type="email" id="userEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="userPassword">Mật khẩu:</label>
+                    <input type="password" id="userPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="userRole">Quyền:</label>
+                    <select id="userRole" required>
+                        <option value="user">User</option>
+                        <option value="editor">Editor</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Lưu</button>
+                    <button type="button" class="btn-secondary" onclick="closeModal()">Hủy</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
-            document.addEventListener('click', function(event) {
-                if (!sidebar.contains(event.target) && !menuBtn.contains(event.target) && sidebar.classList.contains('active')) {
-                    sidebar.classList.remove('active');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    navLinks.forEach(l => l.classList.remove('active'));
-                    this.classList.add('active');
-                });
-            });
-        });
-    </script>
+    <script src="../../Admin/js/users.js"></script>
 </body>
 </html>

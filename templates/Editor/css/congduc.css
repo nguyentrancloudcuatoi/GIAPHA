@@ -700,3 +700,137 @@ button[style*='background:#fff']:hover, .filter-btn:hover {
         grid-template-columns: 1fr;
     }
 }
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.modal-content h2 {
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+    font-size: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #4a5568;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+.form-group input:focus {
+    border-color: #8bb7a2;
+    box-shadow: 0 0 0 3px rgba(139, 183, 162, 0.1);
+    outline: none;
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.save-btn, .cancel-btn {
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.save-btn {
+    background: #8bb7a2;
+    color: white;
+    border: none;
+}
+
+.save-btn:hover {
+    background: #7aa391;
+}
+
+.cancel-btn {
+    background: white;
+    color: #4a5568;
+    border: 1.5px solid #e2e8f0;
+}
+
+.cancel-btn:hover {
+    background: #f8f9fa;
+    border-color: #cbd5e0;
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    color: #4a5568;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 6px;
+    transition: all 0.2s;
+}
+
+.action-btn:hover {
+    background: #f8f9fa;
+}
+
+.action-btn.edit:hover {
+    color: #8bb7a2;
+}
+
+.action-btn.delete:hover {
+    color: #e53e3e;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        padding: 1.5rem;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .save-btn, .cancel-btn {
+        width: 100%;
+    }
+}

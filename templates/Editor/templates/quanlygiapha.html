@@ -8,58 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://unpkg.com/gojs/release/go.js"></script>
-    <style>
-        #myDiagramDiv {
-            width: 100%;
-            height: 700px;
-            background-color: white;
-            border: 1px solid #e2e8f0;
-            border-radius: 10px;
-        }
-
-        .controls {
-            margin-bottom: 20px;
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 10px 20px;
-            border-radius: 5px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn-primary {
-            background: #4e73df;
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: #2e59d9;
-        }
-
-        .btn-secondary {
-            background: #858796;
-            color: white;
-        }
-
-        .btn-secondary:hover {
-            background: #717484;
-        }
-
-        .tree-container {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-    </style>
+    <link rel="stylesheet" href="../../Editor/css/quanlygiapha.css">
 </head>
 <body>
     <!-- Mobile Menu Button -->
@@ -81,7 +30,6 @@
             <li><a href="/templates/Editor/templates/phaky.html"><i class="fas fa-book"></i> Phả ký</a></li>
             <li><a href="/templates/Editor/templates/congduc.html"><i class="fas fa-hand-holding-heart"></i> Công đức</a></li>
             <li><a href="/templates/Editor/templates/ngoaipha.html"><i class="fas fa-users"></i> Ngoại phả</a></li>
-            <li><a href="/templates/Editor/templates/hinhanh.html"><i class="fas fa-image"></i> Hình ảnh</a></li>
         </ul>
         <div style="position: absolute; bottom: 2rem; width: calc(100% - 3rem);">
             <ul class="nav-links">
@@ -104,112 +52,74 @@
             <button class="btn btn-secondary" onclick="centerTree()">
                 <i class="fas fa-compress-arrows-alt"></i> Căn giữa
             </button>
+            <button class="btn btn-primary" onclick="openAddMemberModal()">
+                <i class="fas fa-user-plus"></i> Thêm thành viên
+            </button>
+            <button class="btn btn-primary" onclick="toggleLinkMode()">
+                <i class="fas fa-link"></i> Nối kết nối
+            </button>
+            <button class="btn btn-primary" onclick="toggleDeleteMode()">
+                <i class="fas fa-trash"></i> Chế độ xóa
+            </button>
         </div>
 
         <div class="tree-container">
             <div id="myDiagramDiv"></div>
         </div>
+
+        <!-- Modal thêm thành viên -->
+        <div class="modal" id="addMemberModal">
+            <div class="modal-content">
+                <h2>Thêm thành viên gia phả</h2>
+                <form id="addMemberForm">
+                    <div class="form-group">
+                        <label>Họ và tên:</label>
+                        <input type="text" id="memberName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Vai trò trong gia phả:</label>
+                        <select id="memberRole" required>
+                            <option value="">-- Chọn vai trò --</option>
+                            <option value="ong_noi">Ông nội</option>
+                            <option value="ba_noi">Bà nội</option>
+                            <option value="ong_ngoai">Ông ngoại</option>
+                            <option value="ba_ngoai">Bà ngoại</option>
+                            <option value="cha">Cha</option>
+                            <option value="me">Mẹ</option>
+                            <option value="chu">Chú</option>
+                            <option value="bac">Bác</option>
+                            <option value="co">Cô</option>
+                            <option value="di">Dì</option>
+                            <option value="anh">Anh</option>
+                            <option value="chi">Chị</option>
+                            <option value="em">Em</option>
+                            <option value="chau">Cháu</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Đời thứ:</label>
+                        <input type="number" id="memberGeneration" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Ngày sinh:</label>
+                        <input type="date" id="birthDate">
+                    </div>
+                    <div class="form-group">
+                        <label>Số điện thoại:</label>
+                        <input type="tel" id="phone">
+                    </div>
+                    <div class="form-group">
+                        <label>Email:</label>
+                        <input type="email" id="email" placeholder="Nhập địa chỉ email">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Thêm</button>
+                        <button type="button" class="btn btn-secondary" onclick="closeAddMemberModal()">Hủy</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </main>
-
-    <script>
-        var $ = go.GraphObject.make;
-        var myDiagram = $(go.Diagram, "myDiagramDiv", {
-            "undoManager.isEnabled": true,
-            layout: $(go.TreeLayout, {
-                angle: 90,
-                layerSpacing: 50,
-                alignment: go.TreeLayout.AlignmentStart
-            })
-        });
-
-        // Định nghĩa node template
-        myDiagram.nodeTemplate =
-            $(go.Node, "Vertical",
-                $(go.Panel, "Auto",
-                    $(go.Shape, "RoundedRectangle", {
-                        fill: "white",
-                        stroke: "#4e73df",
-                        strokeWidth: 2
-                    }),
-                    $(go.Panel, "Vertical",
-                        { margin: 8 },
-                        $(go.Picture, {
-                            width: 70,
-                            height: 70,
-                            margin: new go.Margin(4, 4, 4, 4)
-                        },
-                        new go.Binding("source", "pic", function(pic) {
-                            return "../assets/images/" + pic;
-                        })),
-                        $(go.TextBlock, {
-                            font: "bold 14px sans-serif",
-                            textAlign: "center",
-                            margin: 4
-                        },
-                        new go.Binding("text", "name")),
-                        $(go.TextBlock, {
-                            font: "12px sans-serif",
-                            textAlign: "center",
-                            margin: 4
-                        },
-                        new go.Binding("text", "title")),
-                        $(go.TextBlock, {
-                            font: "12px sans-serif",
-                            textAlign: "center",
-                            margin: 4
-                        },
-                        new go.Binding("text", "phone"))
-                    )
-                )
-            );
-
-        // Định nghĩa link template
-        myDiagram.linkTemplate =
-            $(go.Link,
-                { routing: go.Link.Orthogonal, corner: 5 },
-                $(go.Shape, { strokeWidth: 2, stroke: "#4e73df" })
-            );
-
-        // Load data
-        var nodeDataArray = [
-            {"key":1, "name":"Stella Payne Diaz", "title":"CEO", "dept": "Management", "pic":"1.jpg", "email": "sdiaz@example.com", "phone": "(234) 555-6789" },
-            {"key":2, "name":"Luke Warm", "title":"VP Marketing/Sales", "dept": "Management", "pic":"2.jpg", "email": "lwarm@example.com", "phone": "(234) 555-6789", "parent":1},
-            {"key":3, "name":"Meg Meehan Hoffa", "title":"Sales", "dept": "Sales", "pic":"3.jpg", "email": "mhoffa@example.com", "phone": "(234) 555-6789", "parent":2},
-            {"key":4, "name":"Peggy Flaming", "title":"VP Engineering", "dept": "Management", "pic":"4.jpg", "email": "pflaming@example.com", "phone": "(234) 555-6789", "parent":1},
-            {"key":5, "name":"Saul Wellingood", "title":"Manufacturing", "dept": "Production", "pic":"5.jpg", "email": "swellingood@example.com", "phone": "(234) 555-6789", "parent":4},
-            {"key":6, "name":"Al Ligori", "title":"Marketing", "dept": "Marketing", "pic":"6.jpg", "email": "aligori@example.com", "phone": "(234) 555-6789", "parent":2},
-            {"key":7, "name":"Dot Stubadd", "title":"Sales Rep", "dept": "Sales", "pic":"7.jpg", "email": "dstubadd@example.com", "phone": "(234) 555-6789", "parent":3},
-            {"key":8, "name":"Les Ismore", "title":"Project Mgr", "dept": "Production", "pic":"8.jpg", "email": "lismore@example.com", "phone": "(234) 555-6789", "parent":5},
-            {"key":9, "name":"April Lynn Parris", "title":"Events Mgr", "dept": "Marketing", "pic":"9.jpg", "email": "aparris@example.com", "phone": "(234) 555-6789", "parent":6},
-            {"key":10, "name":"Xavier Breath", "title":"Engineering", "dept": "Engineering", "pic":"10.jpg", "email": "xbreath@example.com", "phone": "(234) 555-6789", "parent":4},
-            {"key":11, "name":"Anita Hammer", "title":"Process", "dept": "Production", "pic":"11.jpg", "email": "ahammer@example.com", "phone": "(234) 555-6789", "parent":5},
-            {"key":12, "name":"Billy Aiken", "title":"Software", "dept": "Engineering", "pic":"12.jpg", "email": "baiken@example.com", "phone": "(234) 555-6789", "parent":10},
-            {"key":13, "name":"Stan Wellback", "title":"Testing", "dept": "Engineering", "pic":"13.jpg", "email": "swellback@example.com", "phone": "(234) 555-6789", "parent":10},
-            {"key":14, "name":"Marge Innovera", "title":"Hardware", "dept": "Engineering", "pic":"14.jpg", "email": "minnovera@example.com", "phone": "(234) 555-6789", "parent":10},
-            {"key":15, "name":"Evan Elpus", "title":"Quality", "dept": "Production", "pic":"15.jpg", "email": "eelpus@example.com", "phone": "(234) 555-6789", "parent":5},
-            {"key":16, "name":"Lotta B. Essen", "title":"Sales Rep", "dept": "Sales", "pic":"16.jpg", "email": "lessen@example.com", "phone": "(234) 555-6789", "parent":3}
-        ];
-
-        myDiagram.model = new go.TreeModel(nodeDataArray);
-
-        // Các hàm điều khiển
-        function zoomIn() {
-            myDiagram.commandHandler.increaseZoom();
-        }
-
-        function zoomOut() {
-            myDiagram.commandHandler.decreaseZoom();
-        }
-
-        function centerTree() {
-            myDiagram.scale = 1;
-            myDiagram.commandHandler.scrollToPart(myDiagram.findNodeForKey(1));
-        }
-
-        // Responsive sidebar
-        document.querySelector('.menu-btn').addEventListener('click', function() {
-            document.querySelector('.sidebar').classList.toggle('show');
-        });
-    </script>
+    <script src="../../Editor/js/quanlygiapha.js"></script>
 </body>
 </html>

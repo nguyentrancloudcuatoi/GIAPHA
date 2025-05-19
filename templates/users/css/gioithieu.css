@@ -1,0 +1,157 @@
+/* Styles for Family Tree Introduction Page */
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../assets/images/family-banner.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 100px 0;
+    margin-bottom: 50px;
+}
+
+.section-header {
+    margin-bottom: 40px;
+}
+
+.section-title {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.section-divider {
+    width: 80px;
+    height: 3px;
+    background-color: var(--primary-color);
+    margin: 0 auto;
+}
+
+.info-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+}
+
+.values-list {
+    margin-top: 20px;
+}
+
+.value-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+}
+
+.value-item i {
+    font-size: 1.2rem;
+    margin-right: 10px;
+}
+
+.event-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    height: 100%;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+}
+
+.event-card h4 {
+    color: var(--primary-color);
+}
+
+.family-branches {
+    background-color: #f8f9fa;
+    padding: 40px 0;
+    border-radius: 10px;
+}
+
+.lead {
+    font-size: 1.2rem;
+    line-height: 1.8;
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 60px 0;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .info-card, .event-card {
+        margin-bottom: 20px;
+    }
+}
+
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .event-card {
+        margin-bottom: 20px;
+    }
+    
+    .upcoming-events .event-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .event-date {
+        margin-bottom: 10px;
+    }
+}
+
+
+/* Styles for Introduction Page */
+.hero-section {
+    background-color: var(--bg-light);
+    padding: 80px 0;
+    margin-bottom: 40px;
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.benefit-item {
+    padding: 30px;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.benefit-item:hover {
+    transform: translateY(-5px);
+}
+
+.how-to-use {
+    background-color: var(--bg-light);
+    border-radius: 10px;
+    margin: 40px 0;
+}
+
+.features-section .card {
+    transition: transform 0.3s ease;
+}
+
+.features-section .card:hover {
+    transform: translateY(-5px);
+}
