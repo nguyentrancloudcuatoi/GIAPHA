@@ -158,6 +158,18 @@ function openModal(mode, userId = null) {
             document.getElementById('userEmail').value = user.email;
             document.getElementById('userRole').value = user.role;
             document.getElementById('userPassword').required = false;
+            
+            // Nếu role được thay đổi thành editor, lưu thông tin admin
+            const roleSelect = document.getElementById('userRole');
+            roleSelect.addEventListener('change', function() {
+                if (this.value === 'editor') {
+                    // Lấy ID của admin hiện tại từ session hoặc localStorage
+                    const currentAdminId = localStorage.getItem('currentAdminId');
+                    if (currentAdminId) {
+                        upgradeToEditor(userId, currentAdminId);
+                    }
+                }
+            });
         }
     } else {
         userForm.reset();
@@ -289,3 +301,25 @@ sortFilter.addEventListener('change', displayUsers);
 
 // Hiển thị danh sách ban đầu
 displayUsers();
+
+
+// Hàm nâng cấp tài khoản lên editor và lưu thông tin admin quản lý
+function upgradeToEditor(userId, adminId) {
+    const users = getUsers();
+    const user = users.find(u => u.id === userId);
+    
+    if (!user) return;
+    
+    // Cập nhật role và thêm thông tin admin quản lý
+    user.role = 'editor';
+    user.managedBy = adminId; // Lưu ID của admin quản lý
+    user.upgradeDate = new Date().toISOString();
+    
+    localStorage.setItem('users', JSON.stringify(users));
+    displayUsers();
+}
+
+// Sửa lại hàm openModal để thêm thông tin admin quản lý khi nâng cấp role
+function openModal(mode, userId = null) {
+    // ... existing code ...
+    }
